@@ -94,7 +94,7 @@ Git
 
 1. Clone the Repository
 
-bashgit clone https://github.com/YOUR_USERNAME/Customer-Churn-Prediction.git
+bashgit clone https://github.com/SanjaiSaravana/Customer-Churn-Prediction.git
 cd Customer-Churn-Prediction
 
 2. Create & Activate Virtual Environment
