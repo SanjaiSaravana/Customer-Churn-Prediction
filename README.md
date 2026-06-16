@@ -1,8 +1,10 @@
-📊 Customer Churn Prediction & Analytics Platform
+# 📊 Customer Churn Prediction & Analytics Platform
 
 A Machine Learning-powered web application that predicts telecom customer churn and provides business insights through interactive dashboards. Built using **Python, XGBoost, Scikit-Learn, and Streamlit**, the platform helps businesses identify high-risk customers and take proactive retention measures.
 
-🚀 Features
+---
+
+## 🚀 Features
 
 * Predict customer churn with **86% ROC-AUC**
 * Real-time churn probability prediction
@@ -11,17 +13,21 @@ A Machine Learning-powered web application that predicts telecom customer churn 
 * Feature importance visualization
 * Model performance comparison
 * Batch and single-customer prediction support
-* 
-📂 Dataset
 
-Telco Customer Churn Dataset (Kaggle)
+---
+
+## 📂 Dataset
+
+**Telco Customer Churn Dataset (Kaggle)**
 
 * 7,043 customer records
 * 21 customer attributes
 * Target Variable: Churn (Yes/No)
 * Churn Rate: 26.5%
 
-🧠 Machine Learning Pipeline
+---
+
+## 🧠 Machine Learning Pipeline
 
 * Data Cleaning & Preprocessing
 * Feature Engineering
