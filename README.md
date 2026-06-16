@@ -1,190 +1,155 @@
 📊 Customer Churn Prediction & Analytics Platform
 
-An end-to-end Machine Learning platform that predicts which telecom customers are likely to leave — built with Python, XGBoost, and Streamlit.
+A Machine Learning-powered web application that predicts telecom customer churn and provides business insights through interactive dashboards. Built using **Python, XGBoost, Scikit-Learn, and Streamlit**, the platform helps businesses identify high-risk customers and take proactive retention measures.
 
-📌 What This Project Does
+🚀 Features
 
-Customer churn means a customer stops using a service. For a telecom company, losing customers is expensive — acquiring a new customer costs 5–7× more than retaining an existing one.
+* Predict customer churn with **86% ROC-AUC**
+* Real-time churn probability prediction
+* Customer risk segmentation (High, Medium, Low)
+* Interactive analytics dashboards
+* Feature importance visualization
+* Model performance comparison
+* Batch and single-customer prediction support
+* 
+📂 Dataset
 
-This platform:
+Telco Customer Churn Dataset (Kaggle)
 
-Predicts which customers are about to churn (with ~82% accuracy)
-Explains why they might leave (feature importance)
-Segments customers by risk tier (High / Medium / Low)
-Visualises business KPIs through an interactive 5-page dashboard
-
-
-
-🗂️ Project Structure
-
-Customer-Churn-Prediction/
-│
-├── data/
-│   ├── raw/                        ← Original Kaggle CSV
-│   └── processed/                  ← Cleaned data (auto-generated)
-│
-├── src/
-│   ├── data_preprocessing.py       ← Load, clean, encode, split
-│   ├── feature_engineering.py      ← Create new predictive features
-│   ├── model_training.py           ← Train 5 models + tune XGBoost
-│   ├── model_evaluation.py         ← ROC, PR curves, confusion matrix
-│   └── prediction.py               ← Single + batch prediction engine
-│
-├── app/
-│   ├── app.py                      ← Streamlit entry point
-│   └── pages/
-│       ├── executive_dashboard.py  ← KPIs & business overview
-│       ├── customer_analytics.py   ← Deep-dive customer segments
-│       ├── churn_prediction.py     ← Real-time single prediction
-│       ├── risk_analysis.py        ← Rule-based risk scoring
-│       └── model_performance.py    ← Model comparison & feature importance
-│
-├── models/                         ← Saved model artifacts (auto-generated)
-├── reports/                        ← Evaluation charts (auto-generated)
-├── run_pipeline.py                 ← One-command training pipeline
-└── requirements.txt
-
+* 7,043 customer records
+* 21 customer attributes
+* Target Variable: Churn (Yes/No)
+* Churn Rate: 26.5%
 
 🧠 Machine Learning Pipeline
 
-Dataset
+* Data Cleaning & Preprocessing
+* Feature Engineering
+* Class Imbalance Handling using SMOTE
+* Model Training & Hyperparameter Tuning
+* Model Evaluation using ROC-AUC and Confusion Matrix
+* Model Deployment with Streamlit
 
-Source: Telco Customer Churn — Kaggle
-Size: 7,043 customers × 21 features
-Target: Churn (Yes / No) — 26.5% churn rate
+### Models Evaluated
 
+| Model               | ROC-AUC   |
+| ------------------- | --------- |
+| Logistic Regression | 0.843     |
+| Random Forest       | 0.850     |
+| Gradient Boosting   | 0.856     |
+| XGBoost             | **0.862** |
 
-Models Trained & Compared
+**Best Model:** XGBoost
 
-ModelCV ROC-AUCLogistic Regression~0.843Decision Tree~0.731Random Forest~0.850Gradient Boosting~0.856XGBoost (Tuned) ✅~0.862
+---
 
-Key Steps
+## 📈 Key Churn Drivers
 
+* Contract Type
+* Customer Tenure
+* Monthly Charges
+* Internet Service Type
+* Online Security
+* Technical Support
 
-Data Cleaning — Fixed TotalCharges type issues, handled 11 missing values, standardised SeniorCitizen encoding
-Feature Engineering — Created 9 new features: tenure_group, avg_monthly_spend, charge_ratio, num_services, high_risk_flag, and more
-Class Imbalance — Applied SMOTE (Synthetic Minority Oversampling) to balance 73/27 class ratio
-Hyperparameter Tuning — GridSearchCV over XGBoost parameters
-Evaluation — ROC-AUC, Precision-Recall, Confusion Matrix, Feature Importance
+---
 
+## 📊 Dashboard Modules
 
-Top Churn Predictors (from XGBoost)
+### 🏠 Executive Dashboard
 
+Business KPIs, churn trends, and customer distribution.
 
-Contract type (month-to-month = highest risk)
-Tenure (newer customers churn more)
-Monthly charges (higher bill = higher risk)
-Internet service type (Fiber optic users churn more)
-Online security (customers without it churn more)
+### 👥 Customer Analytics
 
+Customer segmentation, tenure analysis, and spending patterns.
 
+### 🔮 Churn Prediction
 
-📊 Dashboard Pages
+Real-time customer churn prediction with probability scores.
 
-PageWhat You See🏠 Executive DashboardChurn KPIs, pie chart, churn by contract & internet service👥 Customer AnalyticsFilterable charts: charges distribution, tenure scatter, payment analysis🔮 Churn PredictionLive form — enter any customer's details, get instant churn probability⚠️ Risk AnalysisRule-based risk scoring, high-risk customer table📈 Model PerformanceCV comparison bar chart, top 20 feature importances
+### ⚠️ Risk Analysis
 
-⚙️ Setup & Run
+Identify and monitor high-risk customers.
 
-Prerequisites
+### 📈 Model Performance
 
+Compare models and visualize feature importance.
 
-Python 3.10+
-Git
+---
 
+## 🛠️ Tech Stack
 
-1. Clone the Repository
+**Programming:** Python
 
-bashgit clone https://github.com/SanjaiSaravana/Customer-Churn-Prediction.git
+**Machine Learning:** Scikit-Learn, XGBoost, Imbalanced-Learn
+
+**Data Analysis:** Pandas, NumPy
+
+**Visualization:** Plotly, Matplotlib, Seaborn
+
+**Deployment:** Streamlit
+
+---
+
+## ⚙️ Installation
+
+```bash
+git clone https://github.com/SanjaiSaravana/Customer-Churn-Prediction.git
+
 cd Customer-Churn-Prediction
 
-2. Create & Activate Virtual Environment
+pip install -r requirements.txt
+```
 
-bash# Windows
-python -m venv venv
-venv\Scripts\activate
+### Run Training Pipeline
 
-# Mac / Linux
-python -m venv venv
-source venv/bin/activate
+```bash
+python run_pipeline.py
+```
 
-3. Install Dependencies
+### Launch Dashboard
 
-bashpip install -r requirements.txt
+```bash
+cd app
 
-4. Download Dataset
-
-
-Go to Kaggle — Telco Customer Churn
-Download and extract the zip
-Place WA_Fn-UseC_-Telco-Customer-Churn.csv in data/raw/
-
-
-5. Train the Model (One Command)
-
-bashpython run_pipeline.py
-
-This runs the full pipeline: clean → engineer → train → evaluate → save. Takes ~3–5 minutes.
-
-6. Launch the Dashboard
-
-bashcd app
 streamlit run app.py
+```
 
-Open your browser at http://localhost:8501 🎉
+---
 
+## 🎯 Sample Prediction
 
-📦 Dependencies
+**Customer Profile**
 
-pandas==2.1.4          # Data manipulation
-numpy==1.26.2          # Numerical computing
-scikit-learn==1.3.2    # ML algorithms + preprocessing
-xgboost==2.0.3         # Gradient boosting (best model)
-matplotlib==3.8.2      # Static plots
-seaborn==0.13.0        # Statistical visualisation
-plotly==5.18.0         # Interactive charts
-streamlit==1.29.0      # Web dashboard
-joblib==1.3.2          # Model serialisation
-imbalanced-learn==0.11.0  # SMOTE for class imbalance
-openpyxl==3.1.2        # Excel support
+* Month-to-Month Contract
+* Fiber Optic Internet
+* No Online Security
+* 12 Months Tenure
+* High Monthly Charges
 
+**Prediction Result:** High Risk Customer with approximately **78% churn probability**.
 
-🔑 Key Concepts Explained
+---
 
-TermPlain EnglishChurnA customer stops using the serviceROC-AUCHow well the model separates churners from non-churners (1.0 = perfect)SMOTEArtificially creates more examples of the minority class to prevent biasXGBoostA powerful tree-based algorithm that wins most ML competitionsFeature ImportanceWhich customer attributes matter most to the predictionRisk TierHigh / Medium / Low grouping based on multiple risk factors
+## 🔮 Future Enhancements
 
+* SHAP Explainable AI
+* Cloud Deployment (AWS/Streamlit Cloud)
+* PostgreSQL Integration
+* Automated Email Alerts
+* Retention Strategy Simulator
 
-🧪 Sample Prediction
+---
 
-A customer with:
+## 👨‍💻 Author
 
+**Sanjai S**
 
-Month-to-month contract
-Fiber optic internet
-No online security
-12 months tenure
-$85/month charges
+Computer Science Engineering Student passionate about Machine Learning, Data Science, and Full-Stack Development.
 
+---
 
-Result: 🔴 High Risk — 78% churn probability
+## 📜 License
 
-
-🛣️ Future Improvements
-
-
- Add SHAP explainability (explain individual predictions)
- Deploy to Streamlit Cloud or AWS
- Add batch CSV upload for bulk predictions
- Email alert system for high-risk customers
- Connect to a live database (PostgreSQL)
- A/B test retention strategy simulator
-
-
-
-👨‍💻 Author
-
-Built as a complete industry-level ML portfolio project covering the full data science lifecycle: data ingestion → cleaning → feature engineering → model training → evaluation → deployment.
-
-
-📄 License
-
-MIT License — free to use, modify, and distribute.
+This project is licensed under the MIT License.
